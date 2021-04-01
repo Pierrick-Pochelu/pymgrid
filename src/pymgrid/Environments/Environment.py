@@ -267,7 +267,7 @@ class Environment(gym.Env):
                                                                            mg.grid.power_export))
 
         if mg.architecture['genset'] == 1:
-            control_dict['genset'] = max(0, action[4] * min(action[5] * mg.genset.rated_power_import))
+            control_dict['genset'] = max(0, action[4] * min(action[5] * mg.genset.rated_power, mg.genset.rated_power))
 
         return control_dict
 
