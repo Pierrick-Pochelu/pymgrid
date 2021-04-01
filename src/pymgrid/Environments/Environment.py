@@ -203,8 +203,8 @@ class Environment(gym.Env):
         #         s_ = (net_load, soc)  # next state
         updated_values = self.mg.get_updated_values()
         updated_values = {x:float(updated_values[x])/self.states_normalization[x] for x in self.states_normalization}  
-        updated_values['hour_sin'] = np.sin(2*np.pi*updated_values['hour']) # the hour is already divided by 24 in the line above
-        updated_values['hour_cos'] = np.cos(2*np.pi*updated_values['hour'])  
+        updated_values['hour_sin'] = (np.sin(2*np.pi*updated_values['hour'])+1)/2 # the hour is already divided by 24 in the line above
+        updated_values['hour_cos'] = (np.cos(2*np.pi*updated_values['hour'])+1)/2  
         updated_values.pop('hour', None)
 
         s_ = np.array(list(updated_values.values()))
