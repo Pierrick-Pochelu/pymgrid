@@ -10,11 +10,11 @@ def normalize_environment_states(mg):
         elif keys == 'grid_status' or keys == 'battery_soc':
             max_values[keys] = 1
         elif keys == 'grid_co2':
-            max_values[keys] = max(mg._grid_co2.values[0])
+            max_values[keys] = max(mg._grid_co2.values.flatten())
         elif keys == 'grid_price_import':
-            max_values[keys] = max(mg._grid_price_import.values[0]) 
+            max_values[keys] = max(mg._grid_price_import.values.flatten()) 
         elif keys == 'grid_price_export':
-            max_values[keys] = max(mg._grid_price_import.values[0]) 
+            max_values[keys] = max(mg._grid_price_import.values.flatten()) 
         elif keys == 'load':
             max_values[keys] = mg.parameters.load.values[0]
         elif keys == 'pv':
